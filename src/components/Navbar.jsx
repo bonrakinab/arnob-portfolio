@@ -19,11 +19,11 @@ const Navbar = () => {
       <nav className="container mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
           <a href="#" className="flex items-center">
-            <img src="/assets/profile.svg" alt="Arnob Banik" className="h-14 w-auto min-w-[200px]" />
+            <img src="/assets/profile.svg" alt="Arnob Banik" className="h-12 w-auto min-w-[160px]" />
           </a>
           
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-6">
+          <div className="hidden lg:flex space-x-4 text-sm">
             <a href="#about" className="text-gray-300 hover:text-white transition">About</a>
             <a href="#experience" className="text-gray-300 hover:text-white transition">Experience</a>
             <a href="#extracurriculars" className="text-gray-300 hover:text-white transition">Extracurriculars</a>
@@ -37,7 +37,7 @@ const Navbar = () => {
           </div>
           
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="text-gray-300 hover:text-white focus:outline-none"
@@ -50,7 +50,7 @@ const Navbar = () => {
         
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-4 mobile-menu-bg rounded-lg">
+          <div className="lg:hidden mt-4 mobile-menu-bg rounded-lg">
             <a href="#about" onClick={closeMobileMenu} className="block py-2 px-4 text-sm text-gray-300 hover:bg-gray-700 rounded">About</a>
             <a href="#experience" onClick={closeMobileMenu} className="block py-2 px-4 text-sm text-gray-300 hover:bg-gray-700 rounded">Experience</a>
             <a href="#extracurriculars" onClick={closeMobileMenu} className="block py-2 px-4 text-sm text-gray-300 hover:bg-gray-700 rounded">Extracurriculars</a>
