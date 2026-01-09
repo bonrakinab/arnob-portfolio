@@ -1,30 +1,5 @@
 /* Custom CSS for Portfolio - Advanced Styling */
 
-/* iOS 18 Glassy Navbar Effect */
-.glass-navbar {
-  background: rgba(15, 15, 25, 0.7);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.glass-navbar::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, 
-    rgba(99, 102, 241, 0.05) 0%, 
-    rgba(139, 92, 246, 0.05) 50%, 
-    rgba(236, 72, 153, 0.05) 100%);
-  pointer-events: none;
-  z-index: -1;
-}
-
 /* Neon Glow Animations for Skill Bars */
 @keyframes neon-cyan-glow {
   0%, 100% { box-shadow: 0 0 10px rgba(34, 211, 238, 0.8), 0 0 20px rgba(34, 211, 238, 0.5), inset 0 0 10px rgba(34, 211, 238, 0.3); }
