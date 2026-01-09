@@ -5,7 +5,7 @@ export const Footer = () => (
         Crafted with <span className="footer-heart">❤️</span> and <span className="footer-coffee">☕</span>
       </p>
       <p className="text-xs text-gray-500">
-        © <span className="footer-year">2024</span> Arnob Banik.
+        © <span className="footer-year">2026</span> Arnob Banik.
       </p>
     </div>
   </footer>
