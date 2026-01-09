@@ -15,8 +15,9 @@ const Navbar = () => {
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 transition-all backdrop-blur-sm">
-      <nav className="container mx-auto px-6 py-4">
+    <header className="fixed top-0 left-0 right-0 z-50 transition-all">
+      <div className="glass-navbar">
+        <nav className="container mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
           <a href="#" className="flex items-center">
             <img src="/assets/profile.svg" alt="Arnob Banik" className="h-12 w-auto min-w-[160px]" />
@@ -64,6 +65,7 @@ const Navbar = () => {
           </div>
         )}
       </nav>
+      </div>
     </header>
   );
 };
