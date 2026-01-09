@@ -1,0 +1,49 @@
+<svg viewBox="0 0 200 200" class="transition-all duration-300" xmlns="http://www.w3.org/2000/svg" data-fg-casi23="1.49:1.21858:/src/app/components/PremiumLogos.tsx:111:5:2751:7164:e:svg"><defs data-fg-casi24="1.49:1.21858:/src/app/components/PremiumLogos.tsx:116:7:2867:987:e:defs"><radialGradient id="quantum-rad1" data-fg-casi25="1.49:1.21858:/src/app/components/PremiumLogos.tsx:117:9:2882:212:e:radialGradient"><stop offset="0%" stop-color="#3B82F6" stop-opacity="0.8" data-fg-casi26="1.49:1.21858:/src/app/components/PremiumLogos.tsx:118:11:2927:63:e:stop"/><stop offset="100%" stop-color="#60A5FA" stop-opacity="0.3" data-fg-casi27="1.49:1.21858:/src/app/components/PremiumLogos.tsx:119:11:3001:67:e:stop"/></radialGradient><radialGradient id="quantum-rad2" data-fg-casi28="1.49:1.21858:/src/app/components/PremiumLogos.tsx:121:9:3103:212:e:radialGradient"><stop offset="0%" stop-color="#60A5FA" stop-opacity="0.8" data-fg-casi29="1.49:1.21858:/src/app/components/PremiumLogos.tsx:122:11:3148:65:e:stop"/><stop offset="100%" stop-color="#3B82F6" stop-opacity="0.3" data-fg-casi30="1.49:1.21858:/src/app/components/PremiumLogos.tsx:123:11:3224:65:e:stop"/></radialGradient><linearGradient id="quantum-linear" x1="0%" y1="0%" x2="100%" y2="100%" data-fg-casi31="1.49:1.21858:/src/app/components/PremiumLogos.tsx:125:9:3324:266:e:linearGradient"><stop offset="0%" stop-color="#3B82F6" data-fg-casi32="1.49:1.21858:/src/app/components/PremiumLogos.tsx:126:11:3407:45:e:stop"/><stop offset="50%" stop-color="#7C3AED" data-fg-casi33="1.49:1.21858:/src/app/components/PremiumLogos.tsx:127:11:3463:41:e:stop"/><stop offset="100%" stop-color="#60A5FA" data-fg-casi34="1.49:1.21858:/src/app/components/PremiumLogos.tsx:128:11:3515:49:e:stop"/></linearGradient><filter id="quantum-glow" data-fg-casi35="1.49:1.21858:/src/app/components/PremiumLogos.tsx:130:9:3599:241:e:filter"><feGaussianBlur stdDeviation="3" result="coloredBlur" data-fg-casi36="1.49:1.21858:/src/app/components/PremiumLogos.tsx:131:11:3636:55:e:feGaussianBlur"/><feMerge data-fg-casi37="1.49:1.21858:/src/app/components/PremiumLogos.tsx:132:11:3702:120:e:feMerge"><feMergeNode in="coloredBlur" data-fg-casi38="1.49:1.21858:/src/app/components/PremiumLogos.tsx:133:13:3724:31:e:feMergeNode"/><feMergeNode in="SourceGraphic" data-fg-casi39="1.49:1.21858:/src/app/components/PremiumLogos.tsx:134:13:3768:33:e:feMergeNode"/></feMerge></filter></defs><style data-fg-casi40="1.49:1.21858:/src/app/components/PremiumLogos.tsx:139:7:3868:1387:e:style">
+          @keyframes quantumOrbit1 {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+          
+          @keyframes quantumOrbit2 {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(-360deg); }
+          }
+          
+          @keyframes quantumPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.5; }
+          }
+          
+          @keyframes quantumParticle {
+            0%, 100% { 
+              transform: scale(1);
+              opacity: 0.7;
+            }
+            50% { 
+              transform: scale(1.3);
+              opacity: 1;
+            }
+          }
+          
+          .quantum-orbit-1 {
+            animation: quantumOrbit1 20s linear infinite;
+            transform-origin: center;
+          }
+          
+          .quantum-orbit-2 {
+            animation: quantumOrbit2 15s linear infinite;
+            transform-origin: center;
+          }
+          
+          .quantum-field-1 {
+            animation: quantumPulse 4s ease-in-out infinite;
+          }
+          
+          .quantum-field-2 {
+            animation: quantumPulse 5s ease-in-out infinite 1s;
+          }
+          
+          .quantum-particle {
+            animation: quantumParticle 2s ease-in-out infinite;
+          }
+        </style><circle cx="80" cy="80" r="50" fill="url(#quantum-rad1)" opacity="0.3" class="quantum-field-1" data-fg-casi43="1.49:1.21858:/src/app/components/PremiumLogos.tsx:192:7:5308:178:e:circle"/><circle cx="120" cy="120" r="50" fill="url(#quantum-rad2)" opacity="0.3" class="quantum-field-2" data-fg-casi44="1.49:1.21858:/src/app/components/PremiumLogos.tsx:200:7:5493:180:e:circle"/><ellipse cx="100" cy="100" rx="65" ry="45" fill="none" stroke="url(#quantum-linear)" stroke-width="1.5" opacity="0.4" transform="rotate(30 100 100)" class="quantum-orbit-1" data-fg-casi46="1.49:1.21858:/src/app/components/PremiumLogos.tsx:210:7:5715:289:e:ellipse"/><ellipse cx="100" cy="100" rx="65" ry="45" fill="none" stroke="url(#quantum-linear)" stroke-width="1.5" opacity="0.4" transform="rotate(-30 100 100)" class="quantum-orbit-2" data-fg-casi47="1.49:1.21858:/src/app/components/PremiumLogos.tsx:222:7:6011:290:e:ellipse"/><circle cx="100" cy="100" r="55" fill="none" stroke="url(#quantum-linear)" stroke-width="1" opacity="0.3" data-fg-casi48="1.49:1.21858:/src/app/components/PremiumLogos.tsx:234:7:6308:175:e:circle"/><g filter="url(#quantum-glow)" data-fg-casi50="1.49:1.21858:/src/app/components/PremiumLogos.tsx:245:7:6537:1112:e:g"><path d="M72 125 L85 80 L98 125" stroke="url(#quantum-linear)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none" data-fg-casi52="1.49:1.21858:/src/app/components/PremiumLogos.tsx:247:9:6595:206:e:path"/><line x1="77" y1="110" x2="93" y2="110" stroke="url(#quantum-linear)" stroke-width="7" stroke-linecap="round" data-fg-casi53="1.49:1.21858:/src/app/components/PremiumLogos.tsx:255:9:6810:110:e:line"/><path d="M105 80 L105 125" stroke="url(#quantum-linear)" stroke-width="7" stroke-linecap="round" fill="none" data-fg-casi55="1.49:1.21858:/src/app/components/PremiumLogos.tsx:258:9:6956:167:e:path"/><path d="M105 80 L120 80 Q128 80 128 90 Q128 100 120 102.5 L105 102.5" stroke="url(#quantum-linear)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none" data-fg-casi56="1.49:1.21858:/src/app/components/PremiumLogos.tsx:265:9:7132:244:e:path"/><path d="M105 102.5 L122 102.5 Q130 102.5 130 113.75 Q130 125 122 125 L105 125" stroke="url(#quantum-linear)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none" data-fg-casi57="1.49:1.21858:/src/app/components/PremiumLogos.tsx:273:9:7385:253:e:path"/></g><circle cx="100" cy="45" r="4" fill="#3B82F6" opacity="0.7" filter="url(#quantum-glow)" class="quantum-particle" data-fg-casi59="1.49:1.21858:/src/app/components/PremiumLogos.tsx:284:7:7695:267:e:circle" style="animation-delay: 0s;"/><circle cx="145" cy="80" r="3" fill="#60A5FA" opacity="0.6" filter="url(#quantum-glow)" class="quantum-particle" data-fg-casi60="1.49:1.21858:/src/app/components/PremiumLogos.tsx:294:7:7969:271:e:circle" style="animation-delay: 0.3s;"/><circle cx="155" cy="100" r="4" fill="#3B82F6" opacity="0.7" filter="url(#quantum-glow)" class="quantum-particle" data-fg-casi61="1.49:1.21858:/src/app/components/PremiumLogos.tsx:304:7:8247:270:e:circle" style="animation-delay: 0.6s;"/><circle cx="145" cy="120" r="3" fill="#60A5FA" opacity="0.6" filter="url(#quantum-glow)" class="quantum-particle" data-fg-casi62="1.49:1.21858:/src/app/components/PremiumLogos.tsx:314:7:8524:272:e:circle" style="animation-delay: 0.9s;"/><circle cx="100" cy="155" r="4" fill="#3B82F6" opacity="0.7" filter="url(#quantum-glow)" class="quantum-particle" data-fg-casi63="1.49:1.21858:/src/app/components/PremiumLogos.tsx:324:7:8803:270:e:circle" style="animation-delay: 1.2s;"/><circle cx="55" cy="120" r="3" fill="#60A5FA" opacity="0.6" filter="url(#quantum-glow)" class="quantum-particle" data-fg-casi64="1.49:1.21858:/src/app/components/PremiumLogos.tsx:334:7:9080:271:e:circle" style="animation-delay: 1.5s;"/><circle cx="45" cy="100" r="4" fill="#3B82F6" opacity="0.7" filter="url(#quantum-glow)" class="quantum-particle" data-fg-casi65="1.49:1.21858:/src/app/components/PremiumLogos.tsx:344:7:9358:269:e:circle" style="animation-delay: 1.8s;"/><circle cx="55" cy="80" r="3" fill="#60A5FA" opacity="0.6" filter="url(#quantum-glow)" class="quantum-particle" data-fg-casi66="1.49:1.21858:/src/app/components/PremiumLogos.tsx:354:7:9634:270:e:circle" style="animation-delay: 2.1s;"/></svg>
