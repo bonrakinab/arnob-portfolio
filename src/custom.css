@@ -1,5 +1,46 @@
 /* Custom CSS for Portfolio - Advanced Styling */
 
+/* Gradient Text for Name with layered 3D shadow */
+.gradient-text-name {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg,
+    #0ea5e9 0%,    /* neon cyan */
+    #22d3ee 25%,   /* bright aqua */
+    #2563eb 60%,   /* bold blue */
+    #1e3a8a 100%   /* deep royal */
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  position: relative;
+  line-height: 1.05;
+  -webkit-text-stroke: 1.5px #facc15;
+  color: transparent;
+  text-shadow:
+    /* inner dark edge */
+    1px 1px 0 rgba(0, 0, 0, 0.55),
+    -1px -1px 0 rgba(0, 0, 0, 0.55),
+    1px -1px 0 rgba(0, 0, 0, 0.55),
+    -1px 1px 0 rgba(0, 0, 0, 0.55),
+    /* thick yellow outline */
+    2px 2px 0 #facc15,
+    -2px -2px 0 #facc15,
+    2px -2px 0 #facc15,
+    -2px 2px 0 #facc15,
+    3px 3px 0 #facc15,
+    -3px -3px 0 #facc15,
+    3px -3px 0 #facc15,
+    -3px 3px 0 #facc15,
+    /* black drop for depth (reduced) */
+    4px 4px 6px rgba(0, 0, 0, 0.32),
+    7px 7px 10px rgba(0, 0, 0, 0.24),
+    10px 10px 14px rgba(0, 0, 0, 0.18),
+    13px 13px 18px rgba(0, 0, 0, 0.14);
+}
+
 /* Neon Glow Animations for Skill Bars */
 @keyframes neon-cyan-glow {
   0%, 100% { box-shadow: 0 0 10px rgba(34, 211, 238, 0.8), 0 0 20px rgba(34, 211, 238, 0.5), inset 0 0 10px rgba(34, 211, 238, 0.3); }
@@ -26,6 +67,22 @@
   50% { box-shadow: 0 0 20px rgba(34, 197, 94, 1), 0 0 40px rgba(34, 197, 94, 0.7), inset 0 0 20px rgba(34, 197, 94, 0.5); }
 }
 
+  /* Reset name styling to default text */
+  .gradient-text-name,
+  .gradient-text-name::after {
+    background: none;
+    -webkit-background-clip: border-box;
+    -webkit-text-fill-color: currentColor;
+    background-clip: border-box;
+    font-weight: inherit;
+    position: static;
+    text-transform: none;
+    letter-spacing: normal;
+    -webkit-text-stroke: 0;
+    color: inherit;
+    text-shadow: none;
+    content: none;
+  }
 @keyframes neon-green-hover {
   0%, 100% { box-shadow: 0 0 20px rgba(34, 197, 94, 1.5), 0 0 40px rgba(34, 197, 94, 1), 0 0 60px rgba(34, 197, 94, 0.8), inset 0 0 15px rgba(34, 197, 94, 0.7); }
   50% { box-shadow: 0 0 30px rgba(34, 197, 94, 1.8), 0 0 60px rgba(34, 197, 94, 1.2), 0 0 80px rgba(34, 197, 94, 1), inset 0 0 20px rgba(34, 197, 94, 0.9); }
@@ -220,6 +277,9 @@
   content: '';
   position: absolute;
   width: 16px;
+  position: relative;
+  -webkit-text-stroke: 2px #facc15;
+  color: transparent;
   height: 16px;
   background-color: #0a0a0a;
   border: 2px solid #3b82f6;
@@ -243,6 +303,20 @@
   text-align: left;
 }
 
+
+.gradient-text-name::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  z-index: -1;
+  color: #0b1120;
+  text-shadow:
+    2px 2px 0 rgba(0, 0, 0, 0.7),
+    4px 4px 6px rgba(0, 0, 0, 0.5),
+    7px 7px 10px rgba(0, 0, 0, 0.35),
+    10px 10px 14px rgba(0, 0, 0, 0.28);
+}
 .left::before {
   content: " ";
   height: 0;

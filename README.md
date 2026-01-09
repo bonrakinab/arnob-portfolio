@@ -1,30 +1,53 @@
-# Portfolio - Arnob Banik
+# Arnob Banik — Portfolio
 
-## Profile Image
+Personal portfolio built with React, Vite, and Tailwind CSS. Deployed on Vercel.
 
-To add your profile photo:
-1. Place your profile image in the `public/assets/` directory
-2. Name it `profile.jpg` (or update the path in Hero.jsx if using a different name)
-3. The image will automatically display in the About section
-
-If no image is provided, a placeholder with your initials will display instead.
+## Tech Stack
+- React 18
+- Vite 5
+- Tailwind CSS 3
+- Font Awesome (icons)
 
 ## Features
+- Responsive layout with mobile/desktop navigation
+- Hero, About, Experience, Education, Projects, Skills, Certifications, Publications, Awards, and Contact sections
+- Smooth scroll navigation and back-to-top control
+- Typing animation for role highlights
 
-- Three.js animated neural network background
-- Responsive design with mobile menu
-- Card-based layouts with hover effects
-- Timeline visualization for work experience  
-- Skill pills with technology logos
-- Certificate badges with external links
-- Smooth scrolling navigation
-- Back to top button
-- Typing animation effect
+## Getting Started
+Install dependencies:
+```bash
+npm install
+```
 
-## Running the Portfolio
-
+Run locally:
 ```bash
 npm run dev
 ```
+Open http://localhost:5173/
 
-Then open http://localhost:5173 in your browser.
+Build for production:
+```bash
+npm run build
+```
+
+Preview the production build:
+```bash
+npm run preview
+```
+
+## Project Structure
+- `src/` — app entry and shared styles (`index.css`, `custom.css`)
+- `src/components/` — page sections (Hero, About, Experience, Projects, Skills, etc.)
+- `public/assets/` — static assets (profile image, icons)
+
+## Customization
+- Update text/content inside the components in `src/components/`.
+- Adjust global styles/effects in `src/custom.css` or Tailwind config.
+- Profile image: place your photo in `public/assets/` and update the path in the relevant component if you change the filename.
+
+## Deployment
+- Optimized for Vercel. The production output is generated in `dist/` by `npm run build`.
+
+## Contact
+Feel free to reach out at arnob.bnk@gmail.com or via LinkedIn.
