@@ -13,7 +13,7 @@ const Skills = () => {
         { name: "C/C++", proficiency: 82, logo: "https://img.icons8.com/color/48/000000/c-plus-plus-logo.png" },
         { name: "SQL", proficiency: 92, logo: "https://img.icons8.com/fluency/48/000000/sql.png" }
       ],
-      glowColor: "neon-cyan"
+      glowColor: "neon-orange"
     },
     {
       name: "Cloud & Enterprise Platforms",
