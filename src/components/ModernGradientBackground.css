@@ -1,151 +1,134 @@
 .gradient-background {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   z-index: -1;
   overflow: hidden;
-  background-color: #050505;
+  background: #050505;
 }
 
 .gradient-sphere {
   position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
+  border-radius: 999px;
+  filter: blur(70px);
+  opacity: 0.72;
+  will-change: transform;
 }
 
 .sphere-1 {
-  width: 40vw;
-  height: 40vw;
-  background: linear-gradient(40deg, rgba(79, 70, 229, 0.8), rgba(67, 56, 202, 0.4));
-  top: -10%;
-  left: -10%;
-  animation: float-1 15s ease-in-out infinite alternate;
+  width: min(48vw, 720px);
+  height: min(48vw, 720px);
+  top: -18%;
+  left: -14%;
+  background: linear-gradient(40deg, rgba(79, 70, 229, 0.72), rgba(67, 56, 202, 0.28));
+  animation: float-one 18s ease-in-out infinite alternate;
 }
 
 .sphere-2 {
-  width: 45vw;
-  height: 45vw;
-  background: linear-gradient(240deg, rgba(0, 188, 212, 0.8), rgba(0, 229, 255, 0.4));
-  bottom: -20%;
-  right: -10%;
-  animation: float-2 18s ease-in-out infinite alternate;
+  width: min(52vw, 780px);
+  height: min(52vw, 780px);
+  right: -18%;
+  bottom: -22%;
+  background: linear-gradient(240deg, rgba(0, 188, 212, 0.68), rgba(0, 229, 255, 0.24));
+  animation: float-two 22s ease-in-out infinite alternate;
 }
 
 .sphere-3 {
-  width: 30vw;
-  height: 30vw;
-  background: linear-gradient(120deg, rgba(236, 72, 153, 0.8), rgba(186, 85, 211, 0.4));
-  top: 60%;
-  left: 20%;
-  animation: float-3 20s ease-in-out infinite alternate;
-}
-
-.noise-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.05;
-  z-index: 5;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  pointer-events: none;
-}
-
-@keyframes float-1 {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(20%, 30%) scale(1.1);
-  }
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-}
-
-@keyframes float-2 {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(-25%, -20%) scale(1.15);
-  }
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-}
-
-@keyframes float-3 {
-  0% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.3;
-  }
-  50% {
-    transform: translate(-15%, 20%) scale(1.05);
-    opacity: 0.6;
-  }
-  100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.3;
-  }
+  width: min(34vw, 520px);
+  height: min(34vw, 520px);
+  top: 54%;
+  left: 22%;
+  background: linear-gradient(120deg, rgba(236, 72, 153, 0.56), rgba(186, 85, 211, 0.22));
+  animation: float-three 25s ease-in-out infinite alternate;
 }
 
 .grid-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: 40px 40px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  inset: 0;
   z-index: 2;
   pointer-events: none;
+  background-size: 48px 48px;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  mask-image: linear-gradient(to bottom, black, transparent 92%);
+}
+
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
 .glow {
   position: absolute;
-  width: 40vw;
-  height: 40vh;
-  background: radial-gradient(circle, rgba(72, 0, 255, 0.15), transparent 70%);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  animation: pulse 8s infinite alternate;
-  filter: blur(30px);
+  top: 35%;
+  left: 48%;
+  width: 45vw;
+  height: 45vh;
+  z-index: 1;
   pointer-events: none;
-}
-
-@keyframes pulse {
-  0% {
-    opacity: 0.3;
-    transform: translate(-50%, -50%) scale(0.9);
-  }
-  100% {
-    opacity: 0.7;
-    transform: translate(-50%, -50%) scale(1.1);
-  }
+  transform: translate(-50%, -50%);
+  filter: blur(38px);
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.14), transparent 70%);
+  animation: pulse-glow 10s ease-in-out infinite alternate;
 }
 
 .particles-container {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   z-index: 3;
   pointer-events: none;
 }
 
 .particle {
   position: absolute;
-  background: white;
-  border-radius: 50%;
+  display: block;
+  border-radius: 999px;
   opacity: 0;
-  pointer-events: none;
+  background: rgba(255, 255, 255, 0.7);
+  animation-name: drift-particle;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes float-one {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(13vw, 10vh, 0) scale(1.08); }
+}
+
+@keyframes float-two {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(-12vw, -8vh, 0) scale(1.12); }
+}
+
+@keyframes float-three {
+  from { transform: translate3d(0, 0, 0) scale(0.96); opacity: 0.42; }
+  to { transform: translate3d(-7vw, 9vh, 0) scale(1.06); opacity: 0.7; }
+}
+
+@keyframes pulse-glow {
+  from { transform: translate(-50%, -50%) scale(0.9); opacity: 0.38; }
+  to { transform: translate(-50%, -50%) scale(1.08); opacity: 0.72; }
+}
+
+@keyframes drift-particle {
+  0% { transform: translate3d(0, 20px, 0); opacity: 0; }
+  18% { opacity: 0.42; }
+  82% { opacity: 0.18; }
+  100% { transform: translate3d(var(--particle-drift), -120px, 0); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gradient-sphere,
+  .glow,
+  .particle {
+    animation: none !important;
+  }
+
+  .particle {
+    display: none;
+  }
 }
