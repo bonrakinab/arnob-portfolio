@@ -11,20 +11,6 @@ const featuredProjects = [
     links: []
   },
   {
-    label: 'Full-Stack AI Platform',
-    title: 'Job Application Intelligence Dashboard',
-    summary: 'A human-in-the-loop platform that discovers public jobs, filters hard eligibility constraints, ranks fit and prepares truthful application materials.',
-    built: 'Next.js dashboard with Supabase/PostgreSQL persistence, RLS, Gemini/OpenAI analysis, ATS-friendly PDF generation, Gmail digests and public ATS connectors.',
-    impact: 'Tracks a 148-company employer watchlist through four scheduled discovery workers while keeping human approval between generated materials and official applications.',
-    metrics: ['148 target companies', '4 scheduled workers', 'ATS PDFs + Gmail digests'],
-    tech: ['Next.js', 'TypeScript', 'Supabase', 'PostgreSQL', 'Gemini', 'OpenAI', 'Vercel'],
-    status: 'Live',
-    links: [
-      { label: 'Live dashboard', href: 'https://job-application-dashboard-fx6j.vercel.app', icon: 'fa-solid fa-arrow-up-right-from-square' },
-      { label: 'Source', href: 'https://github.com/bonrakinab/job-application-dashboard', icon: 'fab fa-github' }
-    ]
-  },
-  {
     label: 'Full-Stack Product',
     title: 'Flowdesk',
     summary: 'A personal and household CRM that brings tickets, schedules, notes, finances, medication and focus tools into one secure workspace.',
