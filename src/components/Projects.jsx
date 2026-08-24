@@ -28,22 +28,43 @@ const featuredProjects = [
 
 const supportingProjects = [
   {
+    label: 'Machine Learning & NLP',
     title: 'Phishing URL Detection',
-    description: 'Evaluated classical machine-learning and transformer approaches on approximately 235,000 URLs, achieving over 99% precision and recall with a Flask interface.',
+    summary: 'A phishing-detection system that evaluates URL patterns with classical machine-learning and transformer-based approaches.',
+    built: 'Prepared and balanced URL features with TF-IDF and SMOTE, compared Random Forest, Decision Tree, Logistic Regression and BERT-based models, and delivered predictions through a Flask interface.',
+    impact: 'Demonstrated that the best-performing models could identify malicious URLs with over 99% precision and recall on a large real-world dataset.',
+    metrics: ['235,795 URLs', 'Over 99% precision & recall', 'Flask web interface'],
     tech: ['Python', 'BERT', 'scikit-learn', 'TF-IDF', 'Flask'],
-    href: 'https://github.com/bonrakinab/Phishing-URL-Detection-Using-Artificial-Intelligence'
+    status: 'Source available',
+    links: [
+      { label: 'Source', href: 'https://github.com/bonrakinab/Phishing-URL-Detection-Using-Artificial-Intelligence', icon: 'fab fa-github' }
+    ]
   },
   {
+    label: 'Predictive Analytics',
     title: 'Student Dropout Analysis',
-    description: 'Analysed 4,424 student records using PCA, cross-validation and ensemble models, reaching 78% predictive accuracy.',
+    summary: 'A predictive-analytics study for identifying students at risk of dropping out from academic and demographic records.',
+    built: 'Processed 4,424 student records, applied PCA and five-fold cross-validation, and compared Random Forest, AdaBoost and other classification models.',
+    impact: 'The best-performing ensemble approach reached 78% predictive accuracy, supporting earlier identification of students who may need academic intervention.',
+    metrics: ['4,424 student records', '78% accuracy', '5-fold cross-validation'],
     tech: ['Python', 'Pandas', 'Random Forest', 'AdaBoost', 'PCA'],
-    href: 'https://github.com/bonrakinab/Student-Dropout-Analysis-and-Prediction-Using-Machine-Learning-Algorithms'
+    status: 'Source available',
+    links: [
+      { label: 'Source', href: 'https://github.com/bonrakinab/Student-Dropout-Analysis-and-Prediction-Using-Machine-Learning-Algorithms', icon: 'fab fa-github' }
+    ]
   },
   {
+    label: 'Computer Vision',
     title: 'Plant Disease Diagnosis',
-    description: 'Built an image-classification workflow comparing CNN, ResNet34 and VGG16 models for plant-disease recognition.',
+    summary: 'An image-classification workflow for recognizing plant diseases from leaf images.',
+    built: 'Developed and compared CNN, ResNet34 and VGG16 architectures, then connected the classification workflow to a Flask-based interface.',
+    impact: 'Created an end-to-end comparative system for evaluating deep-learning architectures and making plant-disease predictions accessible through the web.',
+    metrics: ['CNN, ResNet34 & VGG16', 'Image classification', 'Flask web interface'],
     tech: ['Python', 'TensorFlow', 'Computer Vision', 'Flask'],
-    href: 'https://github.com/bonrakinab/Plant-Disease-Diagnosis'
+    status: 'Source available',
+    links: [
+      { label: 'Source', href: 'https://github.com/bonrakinab/Plant-Disease-Diagnosis', icon: 'fab fa-github' }
+    ]
   }
 ];
 
@@ -57,6 +78,42 @@ const ProjectLinks = ({ links }) => (
   </div>
 );
 
+const ProjectCard = ({ project, number }) => (
+  <article className="featured-project">
+    <div className="featured-project-header">
+      <div>
+        <p className="project-index">{String(number).padStart(2, '0')} · {project.label}</p>
+        <h3>{project.title}</h3>
+      </div>
+      <span className="status-badge">{project.status}</span>
+    </div>
+
+    <p className="featured-summary">{project.summary}</p>
+
+    <div className="case-study-grid">
+      <div>
+        <h4>What I built</h4>
+        <p>{project.built}</p>
+      </div>
+      <div>
+        <h4>Outcome</h4>
+        <p>{project.impact}</p>
+      </div>
+    </div>
+
+    <div className="metric-row">
+      {project.metrics.map((metric) => <span key={metric}>{metric}</span>)}
+    </div>
+
+    <div className="project-footer">
+      <div className="tech-tags">
+        {project.tech.map((technology) => <span key={technology}>{technology}</span>)}
+      </div>
+      {project.links.length > 0 && <ProjectLinks links={project.links} />}
+    </div>
+  </article>
+);
+
 const Projects = () => (
   <section id="projects" className="portfolio-section mb-24">
     <div className="section-heading">
@@ -67,60 +124,19 @@ const Projects = () => (
 
     <div className="space-y-8">
       {featuredProjects.map((project, index) => (
-        <article key={project.title} className="featured-project">
-          <div className="featured-project-header">
-            <div>
-              <p className="project-index">0{index + 1} · {project.label}</p>
-              <h3>{project.title}</h3>
-            </div>
-            <span className="status-badge">{project.status}</span>
-          </div>
-
-          <p className="featured-summary">{project.summary}</p>
-
-          <div className="case-study-grid">
-            <div>
-              <h4>What I built</h4>
-              <p>{project.built}</p>
-            </div>
-            <div>
-              <h4>Outcome</h4>
-              <p>{project.impact}</p>
-            </div>
-          </div>
-
-          <div className="metric-row">
-            {project.metrics.map((metric) => <span key={metric}>{metric}</span>)}
-          </div>
-
-          <div className="project-footer">
-            <div className="tech-tags">
-              {project.tech.map((technology) => <span key={technology}>{technology}</span>)}
-            </div>
-            {project.links.length > 0 && <ProjectLinks links={project.links} />}
-          </div>
-        </article>
+        <ProjectCard key={project.title} project={project} number={index + 1} />
       ))}
     </div>
 
     <div className="mt-16">
       <h3 className="text-2xl font-bold text-white mb-6">Additional projects</h3>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {supportingProjects.map((project) => (
-          <article key={project.title} className="supporting-project">
-            <div>
-              <h4>{project.title}</h4>
-              <p>{project.description}</p>
-            </div>
-            <div>
-              <div className="tech-tags compact">
-                {project.tech.map((technology) => <span key={technology}>{technology}</span>)}
-              </div>
-              <a href={project.href} target="_blank" rel="noopener noreferrer" className="project-source-link">
-                <i className="fab fa-github" aria-hidden="true"></i> View source
-              </a>
-            </div>
-          </article>
+      <div className="space-y-8">
+        {supportingProjects.map((project, index) => (
+          <ProjectCard
+            key={project.title}
+            project={project}
+            number={featuredProjects.length + index + 1}
+          />
         ))}
       </div>
     </div>
