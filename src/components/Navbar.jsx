@@ -1,93 +1,43 @@
 import { useEffect, useState } from 'react';
+import { NAV, PROFILE } from '../data';
 
-const navItems = [
-  { label: 'About', id: 'about' },
-  { label: 'Work', id: 'projects' },
-  { label: 'Experience', id: 'experience' },
-  { label: 'Research', id: 'research' },
-  { label: 'Skills', id: 'skills' },
-  { label: 'Education', id: 'education' },
-  { label: 'Contact', id: 'contact' }
-];
+export default function Navbar(){
+  const [open,setOpen]=useState(false);
+  const [active,setActive]=useState('about');
+  const [progress,setProgress]=useState(0);
 
-const Navbar = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  useEffect(()=>{
+    const onScroll=()=>{
+      const max=document.documentElement.scrollHeight-innerHeight;
+      setProgress(max ? scrollY/max : 0);
+    };
+    onScroll();
+    addEventListener('scroll',onScroll,{passive:true});
+    const sections=NAV.map(([id])=>document.getElementById(id)).filter(Boolean);
+    const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&setActive(e.target.id)),{rootMargin:'-45% 0px -50% 0px'});
+    sections.forEach(s=>io.observe(s));
+    return()=>{removeEventListener('scroll',onScroll);io.disconnect();};
+  },[]);
 
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 24);
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  useEffect(()=>{
+    document.body.style.overflow=open?'hidden':'';
+    const esc=e=>e.key==='Escape'&&setOpen(false);
+    addEventListener('keydown',esc);
+    return()=>{document.body.style.overflow='';removeEventListener('keydown',esc);};
+  },[open]);
 
-  const navigateTo = (event, id) => {
-    event.preventDefault();
-    const target = document.getElementById(id);
-    if (!target) return;
-
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
-    window.history.replaceState(null, '', '#' + id);
-    setMobileMenuOpen(false);
-  };
-
-  return (
-    <header className={'fixed top-0 left-0 right-0 z-50 transition-all ' + (scrolled ? 'nav-scrolled' : 'nav-transparent')}>
-      <nav className="container mx-auto px-6 py-4" aria-label="Primary navigation">
-        <div className="flex justify-between items-center">
-          <a href="#about" onClick={(event) => navigateTo(event, 'about')} className="flex items-center">
-            <img src="/assets/profile.svg" alt="Arnob Banik home" className="h-11 w-auto min-w-[150px]" />
-          </a>
-
-          <div className="hidden lg:flex items-center gap-5 text-sm">
-            {navItems.map((item) => (
-              <a
-                key={item.id}
-                href={'#' + item.id}
-                onClick={(event) => navigateTo(event, item.id)}
-                className="text-gray-300 hover:text-white focus-visible:text-white transition"
-              >
-                {item.label}
-              </a>
-            ))}
-            <a className="nav-resume-link" href="/assets/Arnob_Banik_Resume.pdf" download>
-              Résumé
-            </a>
-          </div>
-
-          <button
-            type="button"
-            onClick={() => setMobileMenuOpen((open) => !open)}
-            className="lg:hidden rounded-lg p-2 text-gray-200 hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-cyan-400"
-            aria-label="Toggle mobile menu"
-            aria-expanded={mobileMenuOpen}
-            aria-controls="mobile-menu"
-          >
-            <i className={'fas ' + (mobileMenuOpen ? 'fa-times' : 'fa-bars') + ' fa-lg'}></i>
-          </button>
-        </div>
-
-        {mobileMenuOpen && (
-          <div id="mobile-menu" className="lg:hidden mt-4 mobile-menu-bg rounded-xl p-2 shadow-2xl">
-            {navItems.map((item) => (
-              <a
-                key={item.id}
-                href={'#' + item.id}
-                onClick={(event) => navigateTo(event, item.id)}
-                className="block py-3 px-4 text-sm text-gray-200 hover:bg-white/10 rounded-lg"
-              >
-                {item.label}
-              </a>
-            ))}
-            <a className="block py-3 px-4 text-sm font-semibold text-cyan-300" href="/assets/Arnob_Banik_Resume.pdf" download>
-              Download résumé
-            </a>
-          </div>
-        )}
+  return <>
+    <div className="scroll-progress" style={{transform:`scaleX(${progress})`}} />
+    <header className="nav-shell">
+      <a className="brand" href="#main" aria-label="Back to top"><span>{PROFILE.initials}</span><b>{PROFILE.name}</b></a>
+      <nav className="desktop-nav" aria-label="Primary">
+        {NAV.map(([id,label])=><a className={active===id?'active':''} href={'#'+id} key={id}>{label}</a>)}
       </nav>
+      <button className="menu-button" onClick={()=>setOpen(true)} aria-label="Open menu">Menu</button>
     </header>
-  );
-};
-
-export default Navbar;
+    <div className={'mobile-menu '+(open?'open':'')} aria-hidden={!open}>
+      <button className="menu-close" onClick={()=>setOpen(false)} aria-label="Close menu">Close</button>
+      <nav>{NAV.map(([id,label],i)=><a href={'#'+id} onClick={()=>setOpen(false)} key={id}><small>{String(i+1).padStart(2,'0')}</small>{label}</a>)}</nav>
+    </div>
+  </>;
+}

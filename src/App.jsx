@@ -1,38 +1,38 @@
-import { Hero } from './components/Hero';
+import { useEffect } from 'react';
 import Navbar from './components/Navbar';
-import { Footer } from './components/Footer';
-import { BackToTop } from './components/BackToTop';
-import { ContactForm } from './components/ContactForm';
-import Experience from './components/Experience';
-import Education from './components/Education';
-import Projects from './components/Projects';
+import Hero from './components/Hero';
+import About from './components/About';
 import Skills from './components/Skills';
+import Projects from './components/Projects';
+import Timeline from './components/Timeline';
 import Certifications from './components/Certifications';
-import Publications from './components/Publications';
-import ModernGradientBackground from './components/ModernGradientBackground';
+import Achievements from './components/Achievements';
+import Contact from './components/Contact';
 
-function App() {
+export default function App(){
+  useEffect(() => {
+    const nodes=[...document.querySelectorAll('.rv')];
+    const io=new IntersectionObserver(entries => entries.forEach(e => {
+      if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); }
+    }),{threshold:.12});
+    nodes.forEach(n=>io.observe(n));
+    return()=>io.disconnect();
+  },[]);
+
   return (
     <>
-      <a href="#main-content" className="skip-link">Skip to main content</a>
-      <ModernGradientBackground />
+      <a className="skip-link" href="#main">Skip to content</a>
       <Navbar />
-      <main id="main-content" className="pt-24">
+      <main id="main">
         <Hero />
-        <div className="container mx-auto px-6 py-12">
-          <Projects />
-          <Experience />
-          <Publications />
-          <Skills />
-          <Education />
-          <Certifications />
-          <ContactForm />
-        </div>
+        <About />
+        <Skills />
+        <Projects />
+        <Timeline />
+        <Certifications />
+        <Achievements />
+        <Contact />
       </main>
-      <BackToTop />
-      <Footer />
     </>
   );
 }
-
-export default App;
