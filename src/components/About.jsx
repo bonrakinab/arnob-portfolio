@@ -3,7 +3,6 @@ import { PROFILE } from '../data';
 
 export default function About(){
   const [flip,setFlip]=useState(false);
-  const key=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();setFlip(v=>!v)}};
   return <section id="about" className="section about-section">
     <div className="section-tag rv"><span>01</span> — About</div>
     <div className="about-grid">
@@ -17,7 +16,7 @@ export default function About(){
       <div className="lanyard-wrap rv" style={{'--i':1}}>
         <div className="strap"><span>ARNOB BANIK · AI ENGINEER · FULL-STACK DEVELOPER ·</span></div>
         <div className="clip" />
-        <button className={'id-card '+(flip?'flipped':'')} onClick={()=>setFlip(v=>!v)} onKeyDown={key} aria-label="Flip developer ID card">
+        <button className={'id-card '+(flip?'flipped':'')} onClick={()=>setFlip(v=>!v)} aria-label="Flip developer ID card">
           <span className="card-face front">
             <b className="id-band">DEVELOPER ID</b>
             <img src={PROFILE.portrait} alt="" />
