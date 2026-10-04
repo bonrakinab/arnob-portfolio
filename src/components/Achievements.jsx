@@ -17,7 +17,7 @@ export default function Achievements(){
   return <section id="achievements" className="achievements-wrap" ref={wrap}>
     <div className="achievements-sticky section">
       <div className="achievements-head"><div className="section-tag"><span>06</span> — Measured impact</div><div className="achievement-progress"><i style={{transform:`scaleX(${p})`}}/></div></div>
-      <div className="achievement-track" style={{'--progress':p}}>
+      <div className="achievement-track" style={{transform:`translateX(${-p*62}%)`}}>
         {ACHIEVEMENTS.map((a,i)=><article className="achievement-card" key={a.label}><div><span>{String(i+1).padStart(2,'0')} / {String(ACHIEVEMENTS.length).padStart(2,'0')}</span><p>{a.label}</p></div><div><strong>{a.number}</strong><p>{a.caption}</p><small>{a.detail}</small></div></article>)}
         <article className="achievement-card end-card"><strong>and counting →</strong></article>
       </div>
