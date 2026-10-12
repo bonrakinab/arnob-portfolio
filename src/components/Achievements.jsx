@@ -1,26 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect,useRef,useState } from 'react';
 import { ACHIEVEMENTS } from '../data';
+import TechLogo from './TechLogo';
 
-export default function Achievements(){
-  const wrap=useRef(null);
-  const [p,setP]=useState(0);
-  useEffect(()=>{
-    const onScroll=()=>{
-      if(!wrap.current||innerWidth<800) return;
-      const r=wrap.current.getBoundingClientRect();
-      const total=wrap.current.offsetHeight-innerHeight;
-      setP(Math.max(0,Math.min(1,-r.top/Math.max(total,1))));
-    };
-    onScroll(); addEventListener('scroll',onScroll,{passive:true}); addEventListener('resize',onScroll);
-    return()=>{removeEventListener('scroll',onScroll);removeEventListener('resize',onScroll);};
-  },[]);
-  return <section id="achievements" className="achievements-wrap" ref={wrap}>
-    <div className="achievements-sticky section">
-      <div className="achievements-head"><div className="section-tag"><span>06</span> — Measured impact</div><div className="achievement-progress"><i style={{transform:`scaleX(${p})`}}/></div></div>
-      <div className="achievement-track" style={{transform:`translateX(${-p*62}%)`}}>
-        {ACHIEVEMENTS.map((a,i)=><article className="achievement-card" key={a.label}><div><span>{String(i+1).padStart(2,'0')} / {String(ACHIEVEMENTS.length).padStart(2,'0')}</span><p>{a.label}</p></div><div><strong>{a.number}</strong><p>{a.caption}</p><small>{a.detail}</small></div></article>)}
-        <article className="achievement-card end-card"><strong>and counting →</strong></article>
-      </div>
-    </div>
-  </section>;
-}
+function CountUp({item}){const ref=useRef(null),[value,setValue]=useState(0),done=useRef(false);useEffect(()=>{const io=new IntersectionObserver(([e])=>{if(!e.isIntersecting||done.current)return;done.current=true;const start=performance.now(),duration=1400;const tick=now=>{const t=Math.min(1,(now-start)/duration),ease=1-Math.pow(1-t,4);setValue(item.value*ease);if(t<1)requestAnimationFrame(tick)};requestAnimationFrame(tick)},{threshold:.55});ref.current&&io.observe(ref.current);return()=>io.disconnect()},[item.value]);return <strong ref={ref}>{item.prefix||''}{value.toLocaleString(undefined,{minimumFractionDigits:item.decimals||0,maximumFractionDigits:item.decimals||0})}{item.suffix||''}</strong>}
+export default function Achievements(){const wrap=useRef(null),track=useRef(null),cards=useRef([]);const [progress,setProgress]=useState(0),[travel,setTravel]=useState(0),[active,setActive]=useState(0);useEffect(()=>{const measure=()=>{if(!wrap.current||!track.current||innerWidth<800)return;const t=Math.max(0,track.current.scrollWidth-(innerWidth-80));setTravel(t);wrap.current.style.height=`${innerHeight+t}px`};const onScroll=()=>{if(!wrap.current||innerWidth<800)return;const r=wrap.current.getBoundingClientRect(),total=Math.max(wrap.current.offsetHeight-innerHeight,1),next=Math.max(0,Math.min(1,-r.top/total)),x=-next*travel;setProgress(next);let nearest=0,d=Infinity;cards.current.forEach((card,i)=>{if(!card)return;const center=card.offsetLeft+card.offsetWidth/2+x,dist=Math.abs(center-innerWidth/2);if(dist<d){d=dist;nearest=i}});setActive(nearest)};measure();onScroll();addEventListener('resize',measure);addEventListener('scroll',onScroll,{passive:true});return()=>{removeEventListener('resize',measure);removeEventListener('scroll',onScroll)}},[travel]);return <section id="achievements" className="achievements-wrap" ref={wrap}><div className="achievements-sticky section"><div className="achievements-head"><div className="section-tag"><span>06</span> — Measured impact</div><div className="achievement-progress"><i style={{transform:`scaleX(${progress})`}}/></div></div><div className="achievement-track" ref={track} style={{transform:innerWidth>=800?`translateX(${-progress*travel}px)`:undefined}}>{ACHIEVEMENTS.map((a,i)=><article ref={el=>cards.current[i]=el} className={`achievement-card ${active===i?'focused':''}`} key={a.label}><div className="achievement-top"><span className="achievement-logo"><TechLogo name={a.logo} concept={a.concept} size="lg"/></span><small>{String(i+1).padStart(2,'0')} / {String(ACHIEVEMENTS.length).padStart(2,'0')}</small></div><div className="achievement-bottom"><div><p>{a.label}</p><span>{a.caption}</span><em>{a.detail}</em></div><CountUp item={a}/></div></article>)}<article className="achievement-card end-card"><strong>and counting →</strong></article></div></div></section>}
