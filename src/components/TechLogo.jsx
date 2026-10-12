@@ -31,7 +31,7 @@ export default function TechLogo({name,logo,concept,size='md',className=''}){
   const conceptKind=concept||NAME_TO_CONCEPT[name]||'ai';
   const fallback=useMemo(()=>initials(name),[name]);
 
-  if(src&&!failed) return <span className={`tech-logo-shell brand ${size} ${className}`}><img className="tech-logo-image" src={src} alt={`${name} logo`} loading="lazy" onError={()=>setFailed(true)} /></span>;
-  if(concept||NAME_TO_CONCEPT[name]) return <span className={`tech-logo-shell concept ${size} ${className}`} aria-label={`${name} icon`}><ConceptIcon kind={conceptKind}/></span>;
-  return <span className={`tech-logo-shell fallback ${size} ${className}`} aria-label={`${name} mark`}><b>{fallback}</b></span>;
+  if(src&&!failed) return <span className={`tech-logo-shell is-brand ${size} ${className}`}><img className="tech-logo-image" src={src} alt={`${name} logo`} loading="lazy" onError={()=>setFailed(true)} /></span>;
+  if(concept||NAME_TO_CONCEPT[name]) return <span className={`tech-logo-shell is-concept ${size} ${className}`} aria-label={`${name} icon`}><ConceptIcon kind={conceptKind}/></span>;
+  return <span className={`tech-logo-shell is-fallback ${size} ${className}`} aria-label={`${name} mark`}><b>{fallback}</b></span>;
 }
