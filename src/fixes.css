@@ -19,21 +19,21 @@ html{scroll-behavior:smooth}
 .tech-logo-shell.md{width:42px;height:42px;padding:6px}
 .tech-logo-shell.lg{width:58px;height:58px;padding:8px}
 .tech-logo-shell.xl{width:150px;height:150px;padding:20px;border-radius:26px}
-.tech-logo-shell.brand{background:#fff;border:1px solid rgba(13,13,13,.08);box-shadow:0 8px 28px rgba(0,0,0,.08)}
+.tech-logo-shell.is-brand{background:#fff;border:1px solid rgba(13,13,13,.08);box-shadow:0 8px 28px rgba(0,0,0,.08)}
 .tech-logo-image{width:100%;height:100%;object-fit:contain;display:block}
-.tech-logo-shell.concept{color:currentColor;background:rgba(255,255,255,.07);border:1px solid currentColor}
-.tech-logo-shell.concept svg{width:75%;height:75%;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.tech-logo-shell.fallback{background:#fff;color:var(--ink);border:1px solid var(--line);font:800 10px ui-monospace,monospace;letter-spacing:-.04em}
-.tech-logo-shell.fallback.xl{font-size:38px}
+.tech-logo-shell.is-concept{color:currentColor;background:rgba(255,255,255,.07);border:1px solid currentColor}
+.tech-logo-shell.is-concept svg{width:75%;height:75%;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tech-logo-shell.is-fallback{background:#fff;color:var(--ink);border:1px solid var(--line);font:800 10px ui-monospace,monospace;letter-spacing:-.04em}
+.tech-logo-shell.is-fallback.xl{font-size:38px}
 .inspector-logo-wrap{height:172px;display:grid;place-items:center;animation:logoPop .42s var(--ease)}
-.inspector-logo-wrap .tech-logo-shell.concept{color:#fff}
-.inspector-logo-wrap .tech-logo-shell.brand{box-shadow:0 18px 48px rgba(0,0,0,.24)}
+.inspector-logo-wrap .tech-logo-shell.is-concept{color:#fff}
+.inspector-logo-wrap .tech-logo-shell.is-brand{box-shadow:0 18px 48px rgba(0,0,0,.24)}
 .element-top{width:100%;display:flex;align-items:center;justify-content:space-between;gap:6px}
 .element-top small{display:block}
 .element .element-name{font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.element .tech-logo-shell.brand{box-shadow:none}
-.element .tech-logo-shell.concept{color:var(--ink);background:transparent;border-color:rgba(13,13,13,.16)}
-.element .tech-logo-shell.fallback{box-shadow:none}
+.element .tech-logo-shell.is-brand{box-shadow:none}
+.element .tech-logo-shell.is-concept{color:var(--ink);background:transparent;border-color:rgba(13,13,13,.16)}
+.element .tech-logo-shell.is-fallback{box-shadow:none}
 
 @keyframes avatarHalo{0%,100%{transform:scale(.96);opacity:.62}50%{transform:scale(1.04);opacity:.94}}
 @keyframes avatarSpeak{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-4px) scale(1.008)}}
