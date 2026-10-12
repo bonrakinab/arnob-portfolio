@@ -1,15 +1,3 @@
+import { useEffect,useRef,useState } from 'react';
 import { TIMELINE } from '../data';
-
-export default function Timeline(){
-  return <section id="timeline" className="section timeline-section">
-    <div className="section-tag rv"><span>04</span> — Experience + education</div>
-    <div className="heading-row rv"><h2>One path.<br/><em>Different systems.</em></h2><p>From enterprise platforms to applied AI research and product engineering.</p></div>
-    <div className="timeline">
-      {TIMELINE.map((item,i)=><article className="timeline-item rv" style={{'--i':i%4}} key={item.period+item.title}>
-        <div className="timeline-dot"/><p className="timeline-period">{item.period}</p>
-        <div className="timeline-card"><span>{item.type}</span><h3>{item.title}</h3><b>{item.place}</b><p>{item.detail}</p></div>
-      </article>)}
-      <div className="next-card rv"><span>Next</span><strong>Your team?</strong></div>
-    </div>
-  </section>;
-}
+export default function Timeline(){const section=useRef(null);const [p,setP]=useState(0);useEffect(()=>{const onScroll=()=>{if(!section.current)return;const r=section.current.getBoundingClientRect();const start=innerHeight*.68,total=Math.max(section.current.offsetHeight-innerHeight*.35,1);setP(Math.max(0,Math.min(1,(start-r.top)/total)))};onScroll();addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);return()=>{removeEventListener('scroll',onScroll);removeEventListener('resize',onScroll)}},[]);return <section id="experience" className="section timeline-section" ref={section}><div className="section-tag rv"><span>05</span> — Experience + education</div><div className="heading-row rv"><h2>One path.<br/><em>Different systems.</em></h2><p>Education and experience merged into one chronological path.</p></div><div className="timeline"><div className="timeline-spine-fill" style={{transform:`scaleY(${p})`}}/>{TIMELINE.map((item,i)=>{const reached=p>=(i+.25)/TIMELINE.length;return <article className={`timeline-item rv ${reached?'reached':''}`} style={{'--i':i%4}} key={item.period+item.title}><div className="timeline-dot"/><p className="timeline-period">{item.period}</p><div className="timeline-card"><span>{item.type}</span><h3>{item.title}</h3><b>{item.place}</b><p>{item.detail}</p></div></article>})}<div className="next-card rv"><span>Next</span><strong>Your team?</strong></div></div></section>}
